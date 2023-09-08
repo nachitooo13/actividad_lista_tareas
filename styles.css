@@ -16,13 +16,21 @@ body {
     margin-right: 10px;
     }
     button {
-    padding: 8px 15px;
+    padding: 4px 4px;
     background-color: #007bff;
     border: none;
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.3s; /* Transición de color de fondo durante 0.3 segundos */
     }
+
+    button:hover {
+        background-color: #0056b3; /* Nuevo color al pasar el mouse */
+    }
+    
+
     ul {
     list-style-type: none;
     padding: 0;

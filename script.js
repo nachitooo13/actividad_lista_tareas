@@ -11,6 +11,7 @@ function agregarTarea() {
         actualizarListaTareas();
         nuevaTareaInput.value = "";
     }
+    
 }
 
 // Función para marcar o desmarcar una tarea como completada
@@ -23,6 +24,7 @@ function marcarTareaCompleta(index) {
 function mostrarTodasLasTareas() {
     const listaTareas = document.getElementById("listaTareas");
     listaTareas.innerHTML = "";
+    
 
     for (let i = 0; i < tareas.length; i++) {
         const tareaElemento = document.createElement("li");
@@ -37,7 +39,7 @@ function mostrarTodasLasTareas() {
         botonEliminar.className = "delete";
         botonEliminar.onclick = function () {
             tareas.splice(i, 1);
-            actualizarListaTareas();
+            mostrarTodasLasTareas();
         };
 
         const checkbox = document.createElement("input");
@@ -112,11 +114,18 @@ function mostrarPendientes() {
 
 // Agregar evento de clic al botón "Agregar"
 document.getElementById("agregar").addEventListener("click", agregarTarea);
+document.getElementById("agregar").addEventListener("click", mostrarTodasLasTareas);
+
 
 // Agregar eventos de clic a los botones "Mostrar Completadas", "Mostrar Pendientes" y "Mostrar Todas"
 document.getElementById("mostrarCompletadas").addEventListener("click", mostrarCompletadas);
 document.getElementById("mostrarPendientes").addEventListener("click", mostrarPendientes);
 document.getElementById("mostrarTodas").addEventListener("click", mostrarTodasLasTareas);
+
+// Agregar evento de clic al botón "Reiniciar Página"
+document.getElementById("reiniciarPagina").addEventListener("click", function() {
+    location.reload(); // Recarga la página actual
+});
 
 // Inicializar la lista de tareas con el filtro "todas"
 mostrarTodasLasTareas();
